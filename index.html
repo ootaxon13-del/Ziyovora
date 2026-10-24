@@ -1,0 +1,1744 @@
+[24/10/2026 08:21] Risolat: <!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ziyovora — Onlayn Kutubxona</title>
+
+    <meta name="description"
+          content="Ziyovora — kitoblar, she'riyat, romanlar, dostonlar, hikoyalar va jahon adabiyotining zamonaviy onlayn kutubxonasi">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
+          rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #060914;
+            --bg2: #0d1425;
+            --card: rgba(255,255,255,0.07);
+            --border: rgba(255,255,255,0.13);
+            --text: #ffffff;
+            --muted: #aeb7ca;
+            --purple: #8d7cff;
+            --cyan: #46dbc8;
+            --gold: #f2c76e;
+        }
+
+        body {
+            font-family: "Manrope", sans-serif;
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(141,124,255,.20),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(70,219,200,.13),
+                    transparent 28%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050711,
+                    #0a1020,
+                    #060914
+                );
+
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.015) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button,
+        input,
+        select {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        .container {
+            width: min(1180px, 92%);
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: rgba(5,8,18,.72);
+            backdrop-filter: blur(20px);
+
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            height: 76px;
+
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-weight: 800;
+            font-size: 18px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            color: #050914;
+            font-weight: 900;
+            font-size: 21px;
+
+            box-shadow:
+                0 10px 35px
+                rgba(141,124,255,.35);
+        }
+
+        .logo small {
+            display: block;
+            color: var(--muted);
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        .menu {
+            margin-left: auto;
+
+            display: flex;
+            gap: 25px;
+        }
+[24/10/2026 08:21] Risolat: .menu a {
+            color: #c8cede;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        .login-btn {
+            border: 1px solid var(--border);
+
+            background: rgba(255,255,255,.05);
+
+            color: white;
+
+            border-radius: 13px;
+
+            padding: 10px 16px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            padding: 80px 0 60px;
+        }
+
+        .hero-grid {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 40px;
+
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 9px 14px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(141,124,255,.10);
+
+            border: 1px solid
+                rgba(141,124,255,.25);
+
+            color: #cbc5ff;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--cyan);
+
+            box-shadow:
+                0 0 15px var(--cyan);
+        }
+
+        h1 {
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(45px, 6vw, 78px);
+
+            line-height: 1;
+
+            letter-spacing: -3px;
+
+            margin: 22px 0;
+        }
+
+        h1 span {
+            color: transparent;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    white,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .hero-text {
+            max-width: 650px;
+
+            color: var(--muted);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+
+            margin-top: 30px;
+
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+
+            padding: 14px 20px;
+
+            border-radius: 15px;
+
+            font-weight: 800;
+
+            transition: .2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .primary {
+            background:
+                linear-gradient(
+                    135deg,
+                    #b4aaff,
+                    #6fe3d2
+                );
+
+            color: #050914;
+
+            box-shadow:
+                0 15px 35px
+                rgba(141,124,255,.25);
+        }
+
+        .secondary {
+            color: white;
+
+            background:
+                rgba(255,255,255,.06);
+
+            border:
+                1px solid var(--border);
+        }
+
+        /* ================= HERO IMAGE ================= */
+
+        .hero-image {
+            min-height: 500px;
+
+            border-radius: 35px;
+
+            overflow: hidden;
+
+            position: relative;
+
+            background-image:
+                url(
+                    "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1200&q=85"
+                );
+
+            background-size: cover;
+            background-position: center;
+
+            border:
+                1px solid var(--border);
+
+            box-shadow:
+                0 25px 80px
+                rgba(0,0,0,.4);
+        }
+
+        .hero-image::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 20%,
+                    rgba(0,0,0,.85)
+                );
+        }
+
+        .hero-card {
+            position: absolute;
+
+            z-index: 2;
+
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+
+            padding: 20px;
+
+            border-radius: 22px;
+[24/10/2026 08:21] Risolat: background:
+                rgba(4,8,18,.62);
+
+            backdrop-filter: blur(20px);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+        }
+
+        .hero-card small {
+            color: var(--cyan);
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+        .hero-card h2 {
+            font-family:
+                "Playfair Display",
+                serif;
+
+            margin: 8px 0;
+
+            font-size: 27px;
+        }
+
+        .hero-card p {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search {
+            padding: 12px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.06);
+
+            border:
+                1px solid var(--border);
+
+            backdrop-filter: blur(20px);
+
+            display: flex;
+            gap: 10px;
+        }
+
+        .search input {
+            flex: 1;
+
+            min-width: 0;
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: white;
+
+            padding: 12px;
+
+            font-size: 15px;
+        }
+
+        .search input::placeholder {
+            color: #778198;
+        }
+
+        .search select {
+            border: 1px solid var(--border);
+
+            background: #11192c;
+
+            color: white;
+
+            border-radius: 12px;
+
+            padding: 0 12px;
+        }
+
+        .search button {
+            border: none;
+
+            border-radius: 13px;
+
+            padding: 0 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    var(--cyan)
+                );
+
+            font-weight: 800;
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            margin-bottom: 25px;
+        }
+
+        .section-title h2 {
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 38px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+
+            margin-top: 8px;
+        }
+
+        /* ================= CATEGORY ================= */
+
+        .categories {
+            display: flex;
+
+            gap: 10px;
+
+            overflow-x: auto;
+
+            padding-bottom: 8px;
+        }
+
+        .category {
+            white-space: nowrap;
+
+            padding: 11px 17px;
+
+            border-radius: 50px;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,.04);
+
+            color: #cbd2e1;
+        }
+
+        .category:hover {
+            background:
+                rgba(141,124,255,.16);
+
+            color: white;
+        }
+
+        /* ================= BOOKS ================= */
+
+        .books {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 18px;
+        }
+
+        .book {
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,.045);
+
+            border:
+                1px solid var(--border);
+
+            transition: .25s;
+        }
+
+        .book:hover {
+            transform:
+                translateY(-7px);
+
+            border-color:
+                rgba(141,124,255,.45);
+
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.3);
+        }
+
+        .book-cover {
+            height: 260px;
+
+            background-size: cover;
+            background-position: center;
+
+            position: relative;
+        }
+
+        .book-cover::after {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    transparent 45%,
+                    rgba(0,0,0,.8)
+                );
+        }
+
+        .badge {
+            position: absolute;
+[24/10/2026 08:21] Risolat: z-index: 2;
+
+            top: 12px;
+            left: 12px;
+
+            padding: 6px 10px;
+
+            border-radius: 9px;
+
+            background:
+                rgba(0,0,0,.65);
+
+            font-size: 10px;
+
+            font-weight: 800;
+        }
+
+        .book-content {
+            padding: 15px;
+        }
+
+        .book-content h3 {
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 19px;
+
+            margin-bottom: 5px;
+        }
+
+        .author {
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+        .book-bottom {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin-top: 14px;
+        }
+
+        .stars {
+            color: var(--gold);
+
+            font-size: 12px;
+        }
+
+        .read {
+            padding: 8px 11px;
+
+            border-radius: 10px;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,.05);
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 800;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .feature {
+            padding: 25px;
+
+            border-radius: 24px;
+
+            background:
+                rgba(255,255,255,.055);
+
+            border:
+                1px solid var(--border);
+
+            backdrop-filter: blur(20px);
+        }
+
+        .feature-icon {
+            font-size: 30px;
+
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 9px;
+        }
+
+        .feature p {
+            color: var(--muted);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+        /* ================= PREMIUM ================= */
+
+        .premium {
+            padding: 38px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(141,124,255,.18),
+                    rgba(70,219,200,.08)
+                );
+
+            border:
+                1px solid
+                rgba(141,124,255,.3);
+        }
+
+        .premium-grid {
+            display: grid;
+
+            grid-template-columns:
+                1.3fr .7fr;
+
+            gap: 30px;
+
+            align-items: center;
+        }
+
+        .premium h2 {
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 42px;
+
+            margin: 12px 0;
+        }
+
+        .premium p {
+            color: var(--muted);
+
+            line-height: 1.7;
+        }
+
+        .benefits {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 10px;
+
+            margin: 20px 0;
+        }
+
+        .benefit {
+            font-size: 13px;
+        }
+
+        .benefit::before {
+            content: "✓";
+
+            color: var(--cyan);
+
+            font-weight: 900;
+
+            margin-right: 7px;
+        }
+
+        .price {
+            text-align: center;
+
+            padding: 28px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(0,0,0,.25);
+
+            border:
+                1px solid var(--border);
+        }
+
+        .price strong {
+            font-size: 35px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            border-top:
+                1px solid var(--border);
+
+            padding: 45px 0;
+
+            color: var(--muted);
+
+            font-size: 13px;
+        }
+
+        .footer {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+        .phone {
+            color: white;
+
+            font-weight: 800;
+        }
+
+        /* ================= RESPONSIVE ================= */
+[24/10/2026 08:21] Risolat: @media(max-width: 950px) {
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .books {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .premium-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                display: none;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            h1 {
+                font-size: 48px;
+            }
+
+            .books {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+
+            .search {
+                flex-wrap: wrap;
+            }
+
+            .search select,
+            .search button {
+                height: 45px;
+            }
+
+            .hero-image {
+                min-height: 380px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="container nav">
+
+        <a href="#" class="logo">
+
+            <div class="logo-icon">
+                Z
+            </div>
+
+            <div>
+                Ziyovora
+                <small>ONLINE LIBRARY</small>
+            </div>
+
+        </a>
+
+        <div class="menu">
+
+            <a href="#kitoblar">
+                Kitoblar
+            </a>
+
+            <a href="#bolimlar">
+                Bo‘limlar
+            </a>
+
+            <a href="#premium">
+                Premium
+            </a>
+
+            <a href="#aloqa">
+                Aloqa
+            </a>
+
+        </div>
+
+        <button class="login-btn">
+            👤 Kirish
+        </button>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="container hero-grid">
+
+        <div>
+
+            <div class="tag">
+                <span class="dot"></span>
+                Yangi avlod raqamli kutubxonasi
+            </div>
+
+            <h1>
+                Kitoblar bilan
+                <span>boshqacha</span>
+                his qil.
+            </h1>
+
+            <p class="hero-text">
+
+                Ziyovora — zamonaviy va qadimiy jahon
+                adabiyotlarini bir joyga jamlagan raqamli
+                kutubxona. Roman, she’r, doston, hikoya,
+                hadis, diniy va ma’rifiy asarlarni o‘qing,
+                tinglang va kashf qiling.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a
+                    href="#kitoblar"
+                    class="btn primary"
+                >
+                    📚 Kutubxonani ochish
+                </a>
+
+                <button
+                    class="btn secondary"
+                >
+                    ✨ Bepul ro‘yxatdan o‘tish
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-image">
+
+            <div class="hero-card">
+
+                <small>
+                    BUGUNGI TAVSIYA
+                </small>
+
+                <h2>
+                    Kitob — qalbning sokin suhbati
+                </h2>
+
+                <p>
+                    O‘qing. Tinglang. Tasavvur qiling.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="container">
+
+    <div class="search">
+
+        <input
+            type="text"
+            placeholder="Shoir, muallif, asar nomini qidiring..."
+        >
+
+        <select>
+
+            <option>
+                Barcha bo‘limlar
+            </option>
+
+            <option>
+                Roman
+            </option>
+
+            <option>
+                She’riyat
+            </option>
+
+            <option>
+                Doston
+            </option>
+
+            <option>
+                Hikoya
+            </option>
+
+            <option>
+                Hadis
+            </option>
+
+            <option>
+                Diniy
+            </option>
+[24/10/2026 08:21] Risolat: <option>
+                Masal
+            </option>
+
+        </select>
+
+        <button>
+            Qidirish
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<section id="bolimlar">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Adabiyot olami
+            </h2>
+
+            <p>
+                O‘zingizga mos yo‘nalishni tanlang.
+            </p>
+
+        </div>
+
+
+        <div class="categories">
+
+            <button class="category">
+                📚 Barchasi
+            </button>
+
+            <button class="category">
+                📖 Roman
+            </button>
+
+            <button class="category">
+                🪶 She’riyat
+            </button>
+
+            <button class="category">
+                🏛 Doston
+            </button>
+
+            <button class="category">
+                🌙 Hikoya
+            </button>
+
+            <button class="category">
+                ✒️ Nasr
+            </button>
+
+            <button class="category">
+                🕌 Diniy
+            </button>
+
+            <button class="category">
+                ☪ Hadis
+            </button>
+
+            <button class="category">
+                🦊 Masal
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= BOOKS ================= -->
+
+<section id="kitoblar">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <h2>
+                Tanlangan kitoblar
+            </h2>
+
+            <p>
+                Siz uchun tavsiya etilgan asarlar.
+            </p>
+
+        </div>
+
+
+        <div class="books">
+
+
+            <!-- BOOK 1 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        ROMAN
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        O‘tkan kunlar
+                    </h3>
+
+                    <div class="author">
+                        Abdulla Qodiriy
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 2 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        NASR
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Devonu lug‘otit turk
+                    </h3>
+
+                    <div class="author">
+                        Mahmud Koshg‘ariy
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 3 -->
+
+            <div class="book">
+[24/10/2026 08:21] Risolat: <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        DOSTON
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Alpomish
+                    </h3>
+
+                    <div class="author">
+                        O‘zbek xalq dostoni
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 4 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        HIKOYA
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Hikoyalar olami
+                    </h3>
+
+                    <div class="author">
+                        Jahon adabiyoti
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★☆
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 5 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        MASAL
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Masallar bog‘i
+                    </h3>
+
+                    <div class="author">
+                        Jahon folklori
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 6 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        HADIS
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Hadislar xazinasi
+                    </h3>
+
+                    <div class="author">
+                        Ma’rifiy to‘plam
+                    </div>
+
+                    <div class="book-bottom">
+[24/10/2026 08:21] Risolat: <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 7 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        JAHON
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        Ming bir kecha
+                    </h3>
+
+                    <div class="author">
+                        Jahon folklori
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★☆
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- BOOK 8 -->
+
+            <div class="book">
+
+                <div
+                    class="book-cover"
+                    style="
+                    background-image:url(
+                    'https://images.unsplash.com/photo-1455885666463-5a5d7c5e6e0f?auto=format&fit=crop&w=700&q=85'
+                    );
+                    "
+                >
+
+                    <span class="badge">
+                        SHE’RIYAT
+                    </span>
+
+                </div>
+
+                <div class="book-content">
+
+                    <h3>
+                        She’rlar xazinasi
+                    </h3>
+
+                    <div class="author">
+                        Mumtoz va zamonaviy shoirlar
+                    </div>
+
+                    <div class="book-bottom">
+
+                        <span class="stars">
+                            ★★★★★
+                        </span>
+
+                        <button class="read">
+                            O‘qish →
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section>
+
+    <div class="container">
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎧
+                </div>
+
+                <h3>
+                    Audio mutolaa
+                </h3>
+
+                <p>
+                    Foydalanuvchi kitoblarni faqat o‘qib
+                    qolmasdan, audio shaklda ham tinglashi
+                    mumkin.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🎬
+                </div>
+
+                <h3>
+                    Video olami
+                </h3>
+
+                <p>
+                    Kitoblar asosida yaratilgan videolar,
+                    mualliflar haqidagi lavhalar va
+                    sahna ko‘rinishlarini tomosha qilish.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ⌁
+                </div>
+
+                <h3>
+                    QR orqali kirish
+                </h3>
+
+                <p>
+                    Kitobdagi QR kodni telefon orqali
+                    skanerlab, kerakli asarni tezda
+                    ochish imkoniyati.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PREMIUM ================= -->
+
+<section id="premium">
+
+    <div class="container">
+[24/10/2026 08:21] Risolat: <div class="premium">
+
+            <div class="premium-grid">
+
+                <div>
+
+                    <div class="tag">
+                        ZIYOVORA PREMIUM
+                    </div>
+
+                    <h2>
+                        Mutolaani yangi bosqichga olib chiqing.
+                    </h2>
+
+                    <p>
+                        Har bir yangi foydalanuvchi uchun
+                        3 ta bepul mutolaa imkoniyati.
+                        Keyinchalik Premium orqali keng
+                        imkoniyatlardan foydalanish mumkin.
+                    </p>
+
+                    <div class="benefits">
+
+                        <div class="benefit">
+                            Cheksiz kitoblar
+                        </div>
+
+                        <div class="benefit">
+                            Audio kitoblar
+                        </div>
+
+                        <div class="benefit">
+                            Shaxsiy profil
+                        </div>
+
+                        <div class="benefit">
+                            O‘qish statistikasi
+                        </div>
+
+                        <div class="benefit">
+                            Kunlik reyting
+                        </div>
+
+                        <div class="benefit">
+                            QR orqali kirish
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="btn primary"
+                    >
+                        👑 Premiumni faollashtirish
+                    </button>
+
+                </div>
+
+
+                <div class="price">
+
+                    <small>
+                        MAXSUS TARIF
+                    </small>
+
+                    <br><br>
+
+                    <strong>
+                        PREMIUM
+                    </strong>
+
+                    <p>
+                        Batafsil ma’lumot va buyurtma
+                        uchun biz bilan bog‘laning.
+                    </p>
+
+                    <br>
+
+                    <button
+                        class="btn secondary"
+                        onclick="
+                        window.location.href='tel:776645232'
+                        "
+                    >
+                        📞 776645232
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="aloqa">
+
+    <div class="container footer">
+
+        <div>
+
+            <b style="color:white">
+                Ziyovora
+            </b>
+
+            — raqamli mutolaa makoni.
+
+        </div>
+
+        <div>
+
+            Buyurtma va ma’lumot:
+
+            <span class="phone">
+                776645232
+            </span>
+
+        </div>
+
+        <div>
+            © 2026 Ziyovora
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
